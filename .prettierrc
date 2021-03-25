@@ -1,0 +1,6 @@
+{
+  "editorconfig": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "quoteProps": "consistent"
+}
