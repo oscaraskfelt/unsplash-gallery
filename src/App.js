@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { ImageContainer } from './components/ImageContainer';
+import { GlobalStyle } from './styles/index';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -49,9 +51,11 @@ function App() {
   }, [page]);
 
   return (
-    <div>
+    <>
+      <GlobalStyle />
+      <ImageContainer images={images} />
       <div>{loading ? 'loading...' : <div ref={loader}></div>}</div>
-    </div>
+    </>
   );
 }
 
