@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Figure, Image } from './ImageComponent.style.js';
+import { Image, BackgroundImage, MetaDesc } from './ImageComponent.style.js';
 
-const ImageComponent = ({ src, alt }) => {
-  return (
-    <Figure>
-      <Image src={src} alt={alt}></Image>
-    </Figure>
+const ImageComponent = ({ src, alt, enlarge, asBackground, height, width }) => {
+  return asBackground ? (
+    <>
+      <BackgroundImage src={src} alt={alt} />
+      <MetaDesc>
+        height:{height} width: {width}
+      </MetaDesc>
+    </>
+  ) : (
+    <Image onClick={enlarge} src={src} alt={alt} />
   );
 };
 
