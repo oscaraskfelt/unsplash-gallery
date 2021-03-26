@@ -1,28 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [Images, setImages] = useState(null);
-  const [page, setPage] = useState(0);
+  const [images, setImages] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const fetchData = async (url) => {
-    const result = await axios(url, {
-      headers: {
-        Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_API_KEY}`,
-      },
-      params: { per_page: 30, page: page },
-    });
-    console.log(result);
-    setPage(page + 1);
-    setImages(result.data);
+  const loader = useRef(null);
+
+  const handleObserver = (entities) => {
+    const target = entities[0];
+    if (target.isIntersecting) {
+      setPage((page) => page + 1);
+    }
   };
 
   useEffect(() => {
-    const url = 'https://api.unsplash.com/photos';
-    // fetchData(url);
+    var options = {
+      root: null,
+      rootMargin: '20px',
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, options);
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
   }, []);
 
-  return <div>clean slate</div>;
+  useEffect(() => {
+    const fetchData = () => {
+      axios('https://api.unsplash.com/photos', {
+        headers: {
+          Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_API_KEY}`,
+        },
+        params: { per_page: 10, page: page },
+      })
+        .then((result) => {
+          setImages((images) => images.concat(result.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+        })
+        .finally(setLoading(false));
+    };
+
+    fetchData();
+  }, [page]);
+
+  return (
+    <div>
+      <div>{loading ? 'loading...' : <div ref={loader}></div>}</div>
+    </div>
+  );
 }
 
 export default App;
