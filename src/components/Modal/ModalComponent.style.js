@@ -10,11 +10,13 @@ export const Modal = styled.div`
 `;
 
 export const ModalContent = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 2;
+  objec-fit: contain;
 `;
 
 export const Backdrop = styled.div`
@@ -29,8 +31,11 @@ export const Backdrop = styled.div`
 export const CloseIcon = styled(XCircle)`
   position: absolute;
   top: 0;
+  right: 0;
   color: white;
   height: 3rem;
   width: 3rem;
-  align-self: flex-end;
+  background: #33333366;
+  margin: 1rem;
+  border-radius: 50%;
 `;

@@ -9,7 +9,7 @@ import {
 const ModalComponent = ({ children, onClose }) => {
   return (
     <Modal>
-      <ModalContent>
+      <ModalContent onDoubleClick={onClose}>
         <CloseIcon onClick={onClose} />
         {children}
       </ModalContent>
