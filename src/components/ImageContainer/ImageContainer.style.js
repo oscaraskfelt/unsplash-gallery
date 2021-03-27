@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Breakpoints } from '../../styles/breakpoints';
+import { Breakpoints } from '../../styles/Breakpoints';
+import Color from '../../styles/Colors';
 import { ArrowLeft as ArrLeft, ArrowRight as ArrRight } from 'react-feather';
 
 export const Container = styled.div`
@@ -18,13 +19,13 @@ export const ControlSpan = styled.span`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  color: white;
+  color: ${Color.white};
 `;
 
 const arrowStyle = css`
   height: 3rem;
   width: 3rem;
-  background: #33333366;
+  background: ${Color.backgroundBlur};
   margin: 1rem;
   border-radius: 50%;
 `;

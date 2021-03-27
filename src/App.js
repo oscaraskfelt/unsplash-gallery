@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { ImageContainer } from './components/ImageContainer';
+import { Spinner } from './components/Spinner';
 import { GlobalStyle } from './styles/index';
 
 function App() {
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const loader = useRef(null);
 
@@ -31,6 +32,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = () => {
       axios('https://api.unsplash.com/photos', {
         headers: {
@@ -54,7 +56,8 @@ function App() {
     <>
       <GlobalStyle />
       <ImageContainer images={images} />
-      <div>{loading ? 'loading...' : <div ref={loader}></div>}</div>
+      <Spinner show={loading} />
+      <div ref={loader}></div>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Color from '../../styles/Colors';
 
 export const Image = styled.img`
   margin: 1rem;
@@ -21,7 +22,7 @@ export const BackgroundImage = styled.div`
 `;
 
 export const MetaDesc = styled.span`
-  color: #333;
-  background: #fafafa;
+  color: ${Color.text};
+  background: ${Color.background};
   padding: 1rem 6rem;
 `;

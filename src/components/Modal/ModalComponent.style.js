@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { XCircle } from 'react-feather';
+import Color from '../../styles/Colors';
 
 export const Modal = styled.div`
   position: fixed;
@@ -23,7 +24,7 @@ export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #00000066;
+  background-color: ${Color.backdrop};
   width: 100%;
   height: 100%;
 `;
@@ -32,10 +33,10 @@ export const CloseIcon = styled(XCircle)`
   position: absolute;
   top: 0;
   right: 0;
-  color: white;
+  color: ${Color.white};
   height: 3rem;
   width: 3rem;
-  background: #33333366;
+  background: ${Color.backgroundBlur};
   margin: 1rem;
   border-radius: 50%;
 `;

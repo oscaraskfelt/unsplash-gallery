@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
+import Color from './Colors';
 
 export const resetStyles = css`
   *,
@@ -14,5 +15,8 @@ export const resetStyles = css`
 export const GlobalStyle = createGlobalStyle`
   html {
     ${resetStyles}
+  }
+  body {
+    background-color: ${Color.background}
   }
 `;
