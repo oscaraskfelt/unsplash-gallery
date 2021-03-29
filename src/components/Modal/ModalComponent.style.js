@@ -39,4 +39,8 @@ export const CloseIcon = styled(XCircle)`
   background: ${Color.backgroundBlur};
   margin: 1rem;
   border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

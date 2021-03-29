@@ -48,8 +48,9 @@ function App() {
         })
         .finally(setLoading(false));
     };
-
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+    }, 400);
   }, [page]);
 
   return (

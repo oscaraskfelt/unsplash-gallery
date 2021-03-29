@@ -5,6 +5,7 @@ export const Image = styled.img`
   margin: 1rem;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const BackgroundImage = styled.div`
